@@ -31,7 +31,7 @@ export default {
                 success: '#76c893', // Vibrant Green (Success)
                 warning: '#f6bd60', // Warm Yellow (Warning)
                 danger: '#f94144', // Bright Red (Danger)
-                lightPrimaryText: '#075e50', // Brighter Dark Green (Primary Text)
+                lightPrimaryText: '#00211c', // Brighter Dark Green (Primary Text)
                 lightSecondaryText: '#636e72', // Slightly Lighter Gray (Secondary Text)
                 lightCard: '#ffffff', // White (Card Background)
                 lightCardSecondary: '#d9f7f1', // Soft Teal (Card Secondary)
@@ -49,7 +49,7 @@ export default {
                 darkSuccess: '#80e4a5', // Light Vibrant Green (Success)
                 darkWarning: '#ffe05d', // Soft Yellow (Warning)
                 darkDanger: '#f98490', // Soft Coral Red (Danger)
-                darkPrimaryText: '#f0f4f7', // Bright Light Gray (Primary Text)
+                darkPrimaryText: '#fcfeff', // Bright Light Gray (Primary Text)
                 darkSecondaryText: '#cad7e3', // Light Grayish Blue (Secondary Text)
 
                 // Neutral Grays
@@ -87,9 +87,9 @@ export default {
                 DEFAULT: {
                     css: {
                         '*': { margin: '0', padding: '0' },
-                        color: '#075e50', // Lighter primary color for light mode text
+                        color: '#00211c', // Lighter primary color for light mode text
                         '[class~="dark"] &': {
-                            color: '#f0f4f7', // Brighter text in dark mode
+                            color: '#fcfeff', // Brighter text in dark mode
                         },
                         a: {
                             color: '#2a9d8f', // Secondary color for links
@@ -97,14 +97,24 @@ export default {
                             '[class~="dark"] &': { color: '#cad7e3' },
                         },
                         h1: {
-                            color: '#075e50',
+                            color: '#00211c',
                             fontSize: '2.5rem',
                             fontWeight: '600',
-                            '[class~="dark"] &': { color: '#f0f4f7' },
+                            '[class~="dark"] &': { color: '#fcfeff' },
                         },
                         h2: {
                             color: '#2a9d8f',
                             fontSize: '2rem',
+                            fontWeight: '500',
+                            '[class~="dark"] &': { color: '#cad7e3' },
+                        },
+                        input: {
+                            color: '#00211c',
+                            fontWeight: '500',
+                            '[class~="dark"] &': { color: '#cad7e3' },
+                        },
+                        label: {
+                            color: '#00211c',
                             fontWeight: '500',
                             '[class~="dark"] &': { color: '#cad7e3' },
                         },

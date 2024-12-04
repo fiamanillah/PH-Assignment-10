@@ -1,6 +1,11 @@
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import Home from '../pages/Home';
 import App from '../App';
+import LogInPage from '../pages/LogInPage';
+import Error from '../pages/Error';
+import SignUpPage from '../pages/SignUpPage';
+import UserProfile from '../pages/UserProfile';
+import PrivateRoute from '../components/PrivateRoute';
 
 const ROUTES = createBrowserRouter([
     {
@@ -11,7 +16,31 @@ const ROUTES = createBrowserRouter([
                 index: true,
                 element: <Home />,
             },
+            {
+                path: 'login',
+                element: <LogInPage />,
+            },
+            {
+                path: 'register',
+                element: <SignUpPage />,
+            },
+            {
+                path: 'user-profile',
+                element: (
+                    <PrivateRoute>
+                        <UserProfile />,
+                    </PrivateRoute>
+                ),
+            },
         ],
+    },
+    {
+        path: '/404',
+        element: <Error />,
+    },
+    {
+        path: '*',
+        element: <Error />,
     },
 ]);
 

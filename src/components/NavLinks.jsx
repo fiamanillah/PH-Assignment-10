@@ -16,17 +16,28 @@ export default function NavLinks() {
                         Home
                     </NavLink>
                 </li>
-
                 <li>
                     <NavLink
-                        to="/add"
+                        to="/login"
                         className={({ isActive }) =>
                             `!font-bold hover:!text-accent !text-xl ${
-                                isActive ? '!text-accent' : ''
+                                isActive ? '!text-accent underline underline-offset-4' : ''
                             }`
                         }
                     >
-                        Home
+                        Log in
+                    </NavLink>
+                </li>
+                <li>
+                    <NavLink
+                        to="/register"
+                        className={({ isActive }) =>
+                            `!font-bold hover:!text-accent !text-xl ${
+                                isActive ? '!text-accent underline underline-offset-4' : ''
+                            }`
+                        }
+                    >
+                        Register
                     </NavLink>
                 </li>
             </ul>
