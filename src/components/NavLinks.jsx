@@ -2,42 +2,30 @@ import { NavLink } from 'react-router-dom';
 
 export default function NavLinks() {
     return (
-        <nav>
-            <ul className="flex gap-3 duration-200">
-                <li>
+        <nav className="bg-primary bg-opacity-70 py-1 prose-a:text-darkPrimaryText   rounded-full">
+            <ul className="flex gap-0 duration-200">
+                <li className="translate-y-[1px]">
                     <NavLink
                         to="/"
                         className={({ isActive }) =>
-                            `!font-bold hover:!text-accent !text-xl ${
-                                isActive ? '!text-accent underline underline-offset-4' : ''
+                            ` hover:!text-accent !text-xl py-1 px-4  ${
+                                isActive ? '!text-darkPrimaryText bg-darkCard  rounded-full' : ''
                             }`
                         }
                     >
                         Home
                     </NavLink>
                 </li>
-                <li>
+                <li className="translate-y-[1px]">
                     <NavLink
                         to="/login"
                         className={({ isActive }) =>
-                            `!font-bold hover:!text-accent !text-xl ${
-                                isActive ? '!text-accent underline underline-offset-4' : ''
+                            ` hover:!text-accent !text-xl py-1 px-4  ${
+                                isActive ? '!text-darkPrimaryText bg-darkCard  rounded-full' : ''
                             }`
                         }
                     >
-                        Log in
-                    </NavLink>
-                </li>
-                <li>
-                    <NavLink
-                        to="/register"
-                        className={({ isActive }) =>
-                            `!font-bold hover:!text-accent !text-xl ${
-                                isActive ? '!text-accent underline underline-offset-4' : ''
-                            }`
-                        }
-                    >
-                        Register
+                        Log In
                     </NavLink>
                 </li>
             </ul>
