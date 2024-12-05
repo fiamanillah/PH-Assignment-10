@@ -118,6 +118,12 @@ export default {
                             fontWeight: '500',
                             '[class~="dark"] &': { color: '#cad7e3' },
                         },
+                        strong: {
+                            color: '#00211c',
+                            fontSize: '1.5rem',
+                            fontWeight: '600',
+                            '[class~="dark"] &': { color: '#fcfeff' },
+                        },
                         h3: {
                             color: '#2a9d8f',
                             fontSize: '1.75rem',

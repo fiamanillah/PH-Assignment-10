@@ -6,8 +6,8 @@ import Button from '../components/Button';
 
 function UserProfile() {
     const { user, updateUserProfile, logout } = useAuth();
-    const [photoURL, setPhotoURL] = useState('');
-    const [displayName, setDisplayName] = useState('');
+    const [photoURL, setPhotoURL] = useState(user?.photoURL);
+    const [displayName, setDisplayName] = useState(user?.displayName);
     const [isEditing, setIsEditing] = useState(false);
     const [loading, setLoading] = useState(false);
 
@@ -61,9 +61,10 @@ function UserProfile() {
                                     className="bg-lightCardSecondary border border-gray-300 rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-darkCardSecondary"
                                     placeholder="Enter your name"
                                     required
+                                    value={displayName}
                                 />
                             ) : (
-                                <div className="bg-lightCardSecondary border border-gray-300 rounded-lg p-2.5 dark:bg-darkCardSecondary">
+                                <div className="text-lightPrimaryText dark:text-darkPrimaryText bg-lightCardSecondary border border-gray-300 rounded-lg p-2.5 dark:bg-darkCardSecondary">
                                     <span>{user?.displayName || 'No name provided'}</span>
                                 </div>
                             )}
@@ -71,7 +72,7 @@ function UserProfile() {
 
                         <div className="mb-4">
                             <label className="block mb-2 text-sm font-medium">Email</label>
-                            <div className="bg-lightCardSecondary border border-gray-300 rounded-lg p-2.5 dark:bg-darkCardSecondary">
+                            <div className="text-lightPrimaryText dark:text-darkPrimaryText bg-lightCardSecondary border border-gray-300 rounded-lg p-2.5 dark:bg-darkCardSecondary">
                                 <span>{user?.email || 'No email available'}</span>
                             </div>
                         </div>
@@ -87,9 +88,10 @@ function UserProfile() {
                                     className="bg-lightCardSecondary border border-gray-300 rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-darkCardSecondary"
                                     placeholder="https://example.com/photo.jpg"
                                     required
+                                    value={photoURL}
                                 />
                             ) : (
-                                <div className="bg-lightCardSecondary w-full border truncate border-gray-300 rounded-lg p-2.5 dark:bg-darkCardSecondary">
+                                <div className="text-lightPrimaryText dark:text-darkPrimaryText bg-lightCardSecondary w-full border truncate border-gray-300 rounded-lg p-2.5 dark:bg-darkCardSecondary">
                                     <span className="">
                                         {user?.photoURL || 'No photo URL provided'}
                                     </span>
@@ -111,13 +113,15 @@ function UserProfile() {
                                     )}
                                 </Button>
                             ) : (
-                                <Button
+                                <button
                                     type="button"
-                                    className="bg-accent text-darkPrimary"
+                                    className="bg-accent text-darkPrimary px-4 py-2 rounded-lg font-semibold transition duration-200 ease-in-out
+        focus:outline-none
+        hover:scale-105 active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed"
                                     onClick={() => setIsEditing(true)}
                                 >
                                     Edit Profile
-                                </Button>
+                                </button>
                             )}
                             {isEditing ? (
                                 <Button
