@@ -5,11 +5,65 @@ import { useAuth } from '../context/AuthContext';
 import loader4 from '../assets/loader4.json';
 import blank from '../assets/blank.json';
 import Lottie from 'lottie-react';
+import Button from '../components/Button';
+import { IoEyeOutline } from 'react-icons/io5';
+import { FaEdit } from 'react-icons/fa';
+import { MdDeleteOutline } from 'react-icons/md';
+import Swal from 'sweetalert2';
 export default function MyProducts() {
     const { user } = useAuth();
     const [allProduct, setAllProduct] = useState();
     const [loading, setLoading] = useState(false);
     const navigate = useNavigate();
+
+    function handleDelete(prodId) {
+        Swal.fire({
+            title: 'Are you sure?',
+            text: "You won't be able to revert this!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, delete it!',
+        }).then(result => {
+            if (result.isConfirmed) {
+                Swal.fire({
+                    title: 'Deleted!',
+                    text: 'Your file has been deleted.',
+                    icon: 'success',
+                });
+
+                (async () => {
+                    try {
+                        const response = await fetch(
+                            `${import.meta.env.VITE_API_URL}/delete/${prodId}`,
+                            {
+                                method: 'DELETE',
+                            }
+                        );
+
+                        if (!response.ok) {
+                            const error = await response.json();
+                            throw new Error(error.message || 'Failed to add coffee');
+                        } else if (response.ok) {
+                            const data = await response.json();
+                            console.log(data);
+                            if (data.acknowledged) {
+                                const updatedCoffees = allProduct.filter(
+                                    coffee => coffee._id !== prodId
+                                );
+                                console.log(updatedCoffees);
+
+                                setAllProduct(updatedCoffees);
+                            }
+                        }
+                    } catch (error) {
+                        console.error('Error:', error);
+                    }
+                })();
+            }
+        });
+    }
 
     useEffect(() => {
         async function fetchAllData() {
@@ -49,50 +103,55 @@ export default function MyProducts() {
 
     return (
         <Section>
-            <table className="min-w-full border-collapse border border-gray-200 rounded-xl bg-lightCard dark:bg-darkCard text-lightPrimaryText dark:text-darkPrimaryText">
-                <thead>
-                    <tr>
-                        <th className="border border-gray-300 dark:border-gray-600 px-4 py-2 text-lightPrimaryText dark:text-darkPrimaryText">
-                            Name
-                        </th>
-                        <th className="border border-gray-300 dark:border-gray-600 px-4 py-2 text-lightPrimaryText dark:text-darkPrimaryText">
-                            Price ($)
-                        </th>
-                        <th className="border border-gray-300 dark:border-gray-600 px-4 py-2 text-lightPrimaryText dark:text-darkPrimaryText">
-                            Category
-                        </th>
-                        <th className="border border-gray-300 dark:border-gray-600 px-4 py-2 text-lightPrimaryText dark:text-darkPrimaryText">
-                            View
-                        </th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {allProduct?.map(product => (
-                        <tr
-                            key={product._id}
-                            className="even:bg-lightCardSecondary even:dark:bg-darkCardSecondary hover:bg-lightCardHover hover:dark:bg-darkCardHover"
-                        >
-                            <td className="border border-gray-300 dark:border-gray-600 px-4 py-2">
-                                {product.name}
-                            </td>
-                            <td className="border border-gray-300 dark:border-gray-600 px-4 py-2">
-                                {product.price}
-                            </td>
-                            <td className="border border-gray-300 dark:border-gray-600 px-4 py-2">
-                                {product.category}
-                            </td>
-                            <td
-                                className="border border-gray-300 dark:border-gray-600 px-4 py-2 cursor-pointer hover:underline"
+            <div className="grid grid-cols-3 gap-2 ">
+                {allProduct?.map(product => (
+                    <div className="bg-lightCard dark:bg-darkCard p-3 rounded-xl" key={product._id}>
+                        <img
+                            className="h-[300px] w-full object-cover rounded-lg"
+                            src={product?.photoUrl}
+                            alt=""
+                        />
+                        <strong>{product.name}</strong>
+                        <span className="flex items-center gap-2">
+                            Category: {product?.category}
+                        </span>
+                        <span className="flex items-center gap-2">Price: {product?.price} $</span>
+                        <span className="flex items-center gap-2">
+                            Processing Time: {product?.time}
+                        </span>
+                        <span className="flex items-center gap-2">Rating: {product?.rating}</span>
+                        <span className="flex items-center gap-2">
+                            Customization: {product?.customization}
+                        </span>
+                        <div className="flex gap-3 py-3">
+                            <Button
+                                className="bg-info"
                                 onClick={() => {
                                     navigate(`/details/${product._id}`);
                                 }}
                             >
-                                Details
-                            </td>
-                        </tr>
-                    ))}
-                </tbody>
-            </table>
+                                <IoEyeOutline />
+                            </Button>
+                            <Button
+                                className="bg-accent"
+                                onClick={() => {
+                                    navigate(`/edit/${product._id}`);
+                                }}
+                            >
+                                <FaEdit />
+                            </Button>
+                            <Button
+                                className="bg-danger"
+                                onClick={() => {
+                                    handleDelete(product._id);
+                                }}
+                            >
+                                <MdDeleteOutline />
+                            </Button>
+                        </div>
+                    </div>
+                ))}
+            </div>
         </Section>
     );
 }

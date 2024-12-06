@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import InputField from '../components/InputField';
 import Section from '../components/Section';
 import { PiImage } from 'react-icons/pi';
@@ -10,9 +10,12 @@ import { useAuth } from '../context/AuthContext';
 import Button from '../components/Button';
 import Lottie from 'lottie-react';
 import { toast } from 'react-toastify';
+import { useParams } from 'react-router-dom';
 
-export default function AddProduct() {
+export default function EditProduct() {
     const { user, loading } = useAuth();
+    const { editProdId } = useParams();
+    const [product, setProduct] = useState();
     const [name, setName] = useState('');
     const [category, setCategory] = useState('');
     const [description, setdescription] = useState('');
@@ -21,10 +24,43 @@ export default function AddProduct() {
     const [rating, setRating] = useState('');
     const [customization, setCustomization] = useState('');
     const [photoUrl, setPhotoUrl] = useState('');
-
     const successToast = msg => {
         toast.success(msg);
     };
+
+    useEffect(() => {
+        (async () => {
+            try {
+                const response = await fetch(
+                    `${import.meta.env.VITE_API_URL}/details/${editProdId}`
+                );
+
+                if (!response.ok) {
+                    const error = await response.json();
+                    throw new Error(error.message || 'Failed to add coffee');
+                }
+
+                const data = await response.json();
+                setProduct(data);
+            } catch (error) {
+                console.error('Error:', error);
+            }
+        })();
+    }, [editProdId]);
+
+
+    useEffect(() => {
+        if (product) {
+            setName(product?.name);
+            setCategory(product?.category);
+            setdescription(product?.description);
+            setPrice(product?.price);
+            setTime(product?.time);
+            setRating(product?.rating);
+            setCustomization(product?.customization);
+            setPhotoUrl(product?.photoUrl);
+        }
+    }, [product]);
 
     function clearInput() {
         setName('');

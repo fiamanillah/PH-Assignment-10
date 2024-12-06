@@ -11,6 +11,7 @@ import AllProducts from '../pages/AllProducts';
 import ProductDetails from '../pages/ProductDetails';
 import MyProducts from '../pages/MyProducts';
 import Contact from '../pages/Contact';
+import EditProduct from '../pages/EditProduct';
 
 const ROUTES = createBrowserRouter([
     {
@@ -56,6 +57,10 @@ const ROUTES = createBrowserRouter([
             {
                 path: 'details/:prodId',
                 element: <ProductDetails />,
+            },
+            {
+                path: 'edit/:editProdId',
+                element: <EditProduct />,
             },
             {
                 path: 'my-product',
