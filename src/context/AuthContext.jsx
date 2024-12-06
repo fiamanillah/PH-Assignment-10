@@ -31,12 +31,35 @@ export const AuthProvider = ({ children }) => {
         toast.error(msg);
     };
 
+    const addUserToDb = async userInfo => {
+        const userData = {
+            ...userInfo,
+        };
+
+        try {
+            const response = await fetch(`${import.meta.env.VITE_API_URL}/user-add`, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(userData),
+            });
+
+            if (!response.ok) {
+                const error = await response.json();
+                throw new Error(error.message || 'Failed to add coffee');
+            }
+
+            const data = await response.json();
+            console.log('Coffee added:', data);
+        } catch (error) {
+            console.error('Error adding coffee:', error.message);
+        }
+    };
+
     const updateUserProfile = async (displayName, photoURL) => {
         if (auth.currentUser) {
             try {
                 setLoading(true);
                 await updateProfile(auth.currentUser, { displayName, photoURL });
-                // Fetch the updated user data after profile update
                 const updatedUser = auth.currentUser;
                 setUser({ ...updatedUser, displayName, photoURL });
                 successToast('Profile updated successfully');
@@ -52,15 +75,14 @@ export const AuthProvider = ({ children }) => {
         }
     };
 
-    // Sign up with email and password and update profile
     const registerWithEmail = async (email, password, displayName, photoURL) => {
         try {
             setLoading(true);
             const userCredential = await createUserWithEmailAndPassword(auth, email, password);
-            // Update the user's profile with name and photo URL
             updateUserProfile(displayName, photoURL);
             setUser(userCredential.user);
             successToast('Successfully resgistered');
+            addUserToDb(userCredential.user);
         } catch (error) {
             console.error('Registration Error:', error);
             errorToast(error.message);
@@ -92,6 +114,7 @@ export const AuthProvider = ({ children }) => {
             const result = await signInWithPopup(auth, provider);
             setUser(result.user);
             successToast('Sussessfully logged in');
+            addUserToDb(result.user);
         } catch (error) {
             console.error('Google Login Error:', error);
             errorToast(error.message);

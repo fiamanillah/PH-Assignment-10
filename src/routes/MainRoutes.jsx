@@ -7,6 +7,10 @@ import SignUpPage from '../pages/SignUpPage';
 import UserProfile from '../pages/UserProfile';
 import PrivateRoute from '../components/PrivateRoute';
 import AddProduct from '../pages/AddProduct';
+import AllProducts from '../pages/AllProducts';
+import ProductDetails from '../pages/ProductDetails';
+import MyProducts from '../pages/MyProducts';
+import Contact from '../pages/Contact';
 
 const ROUTES = createBrowserRouter([
     {
@@ -22,6 +26,10 @@ const ROUTES = createBrowserRouter([
                 element: <LogInPage />,
             },
             {
+                path: 'contact',
+                element: <Contact />,
+            },
+            {
                 path: 'register',
                 element: <SignUpPage />,
             },
@@ -35,7 +43,27 @@ const ROUTES = createBrowserRouter([
             },
             {
                 path: 'add-product',
-                element: <AddProduct />,
+                element: (
+                    <PrivateRoute>
+                        <AddProduct />,
+                    </PrivateRoute>
+                ),
+            },
+            {
+                path: 'all-products',
+                element: <AllProducts />,
+            },
+            {
+                path: 'details/:prodId',
+                element: <ProductDetails />,
+            },
+            {
+                path: 'my-product',
+                element: (
+                    <PrivateRoute>
+                        <MyProducts />,
+                    </PrivateRoute>
+                ),
             },
         ],
     },

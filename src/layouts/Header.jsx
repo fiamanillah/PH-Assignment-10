@@ -8,7 +8,7 @@ import { Tooltip } from 'react-tooltip';
 import { useAuth } from '../context/AuthContext';
 import Lottie from 'lottie-react';
 import loader1 from '../assets/loader1.json';
-import loader2 from '../assets/loader2.json';
+import loader3 from '../assets/loader3.json';
 import { IoLogOutOutline } from 'react-icons/io5';
 
 function Header() {
@@ -16,7 +16,7 @@ function Header() {
     const { user, loading, logout } = useAuth();
     const navigate = useNavigate();
     return (
-        <Section className={'sticky top-0 bg-opacity-0 backdrop-blur-lg py-0 pt-2'}>
+        <Section className={'sticky top-0 bg-opacity-0 backdrop-blur-lg py-0 pt-2 z-50'}>
             <div className="flex items-center justify-between bg-secondary bg-opacity-30 rounded-full px-3 py-1">
                 <div className="flex items-center gap-5">
                     <Link to={'/'}>
@@ -37,7 +37,7 @@ function Header() {
 
                 <div className="flex items-center gap-2">
                     {loading ? (
-                        <Lottie animationData={loader2} loop={true} className="h-12" />
+                        <Lottie animationData={loader3} loop={true} className="h-12" />
                     ) : user ? (
                         <div className="flex gap-2">
                             <button

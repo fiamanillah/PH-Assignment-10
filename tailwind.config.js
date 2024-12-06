@@ -136,6 +136,12 @@ export default {
                             fontWeight: '400',
                             '[class~="dark"] &': { color: '#cad7e3' },
                         },
+                        span: {
+                            color: '#636e72',
+                            fontSize: '1rem',
+                            fontWeight: '400',
+                            '[class~="dark"] &': { color: '#cad7e3' },
+                        },
                         ul: { listStyleType: 'none' },
                         ol: { listStyleType: 'none' },
                         li: {

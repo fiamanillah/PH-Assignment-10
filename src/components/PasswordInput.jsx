@@ -10,7 +10,7 @@ function PasswordInput({ label, name, id, placeholder, value, onChange, required
             <label htmlFor={id} className="block mb-2 text-sm font-medium">
                 {label}
             </label>
-            <div className="relative">
+            <div className="relative ">
                 <input
                     type={showPassword ? 'text' : 'password'}
                     name={name}
@@ -19,12 +19,12 @@ function PasswordInput({ label, name, id, placeholder, value, onChange, required
                     value={value}
                     onChange={onChange}
                     required={required}
-                    className="bg-lightCardSecondary border border-gray-300 rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 pr-10 dark:bg-darkCardSecondary dark:border-gray-600 dark:placeholder-gray-400 dark:focus:ring-accent dark:focus:border-accent"
+                    className="bg-lightCardSecondary border border-gray-300 rounded-lg outline-none block w-full p-2.5 pr-10 dark:bg-darkCardSecondary dark:border-gray-600 dark:placeholder-gray-400 "
                 />
                 <button
                     type="button"
                     onClick={() => setShowPassword(!showPassword)}
-                    className="absolute inset-y-0 right-0 flex items-center pr-3 text-xl focus:outline-none text-lightPrimaryText dark:text-darkPrimaryText"
+                    className="absolute inset-y-0 right-0 flex items-center pr-3 text-xl outline-none text-lightPrimaryText dark:text-darkPrimaryText z-0"
                 >
                     {showPassword ? <MdOutlineRemoveRedEye /> : <IoEyeOffOutline />}
                 </button>
