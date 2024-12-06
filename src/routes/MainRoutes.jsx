@@ -6,6 +6,7 @@ import Error from '../pages/Error';
 import SignUpPage from '../pages/SignUpPage';
 import UserProfile from '../pages/UserProfile';
 import PrivateRoute from '../components/PrivateRoute';
+import AddProduct from '../pages/AddProduct';
 
 const ROUTES = createBrowserRouter([
     {
@@ -31,6 +32,10 @@ const ROUTES = createBrowserRouter([
                         <UserProfile />,
                     </PrivateRoute>
                 ),
+            },
+            {
+                path: 'add-product',
+                element: <AddProduct />,
             },
         ],
     },
