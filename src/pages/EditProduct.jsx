@@ -11,6 +11,7 @@ import Button from '../components/Button';
 import Lottie from 'lottie-react';
 import { toast } from 'react-toastify';
 import { useParams } from 'react-router-dom';
+import loader4 from '../assets/loader4.json';
 
 export default function EditProduct() {
     const { user, loading } = useAuth();
@@ -24,6 +25,7 @@ export default function EditProduct() {
     const [rating, setRating] = useState('');
     const [customization, setCustomization] = useState('');
     const [photoUrl, setPhotoUrl] = useState('');
+
     const successToast = msg => {
         toast.success(msg);
     };
@@ -47,7 +49,6 @@ export default function EditProduct() {
             }
         })();
     }, [editProdId]);
-
 
     useEffect(() => {
         if (product) {
@@ -73,7 +74,7 @@ export default function EditProduct() {
         setPhotoUrl('');
     }
 
-    async function handleAddCoffee(e) {
+    async function handleUpdateProd(e) {
         e.preventDefault();
 
         // Input validation
@@ -91,7 +92,7 @@ export default function EditProduct() {
             return;
         }
 
-        const coffeeData = {
+        const updatedCoffeeData = {
             name,
             category,
             price: Number(price),
@@ -104,24 +105,39 @@ export default function EditProduct() {
         };
 
         try {
-            const response = await fetch(`${import.meta.env.VITE_API_URL}/add-prod`, {
-                method: 'POST',
+            const response = await fetch(`${import.meta.env.VITE_API_URL}/edit/${product._id}`, {
+                method: 'PUT', // Use PUT for updates
                 headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify(coffeeData),
+                body: JSON.stringify(updatedCoffeeData),
             });
 
             if (!response.ok) {
                 const error = await response.json();
-                throw new Error(error.message || 'Failed to add coffee');
+                throw new Error(error.message || 'Failed to update product');
             }
 
             const data = await response.json();
-            console.log('Coffee added:', data);
-            successToast('Product added successfully!');
+            console.log('Product updated:', data);
+            successToast('Product updated successfully!');
             clearInput();
         } catch (error) {
-            console.error('Error adding coffee:', error.message);
+            console.error('Error updating product:', error.message);
+            toast.error('Failed to update product!');
         }
+    }
+
+    if (!user) {
+        <Section className={'flex justify-center items-center min-h-[80vh]'}>
+            <Lottie animationData={loader4} className="w-40" />;
+        </Section>;
+    }
+
+    if (user?.uid != product?.uid) {
+        return (
+            <Section>
+                <h1>You can not edit this product</h1>
+            </Section>
+        );
     }
 
     return (
@@ -156,8 +172,8 @@ export default function EditProduct() {
                     </div>
                 </div>
                 <div className="my-4  p-3 flex justify-end basis-1/3">
-                    <Button className="bg-accent text-darkPrimaryText" onClick={handleAddCoffee}>
-                        Add Product
+                    <Button className="bg-accent text-darkPrimaryText" onClick={handleUpdateProd}>
+                        Save
                     </Button>
                 </div>
             </div>

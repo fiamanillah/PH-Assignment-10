@@ -130,6 +130,12 @@ export default {
                             fontWeight: '400',
                             '[class~="dark"] &': { color: '#cad7e3' },
                         },
+                        h4: {
+                            color: '#2a9d8f',
+                            fontSize: '1.5rem',
+                            fontWeight: '400',
+                            '[class~="dark"] &': { color: '#cad7e3' },
+                        },
                         p: {
                             color: '#636e72',
                             fontSize: '1rem',

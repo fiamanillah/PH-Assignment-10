@@ -17,10 +17,12 @@ export default function Footer() {
                         src={darkMode ? '/logo-dark.png' : '/logo-light.png'}
                         alt=""
                     />
-                    <p>
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae veritatis,
-                        animi natus veniam cupiditate consequatur rerum iste tempore accusamus fuga!
-                    </p>
+                    <div>
+                        <h4>Contact Us</h4>
+                        <p>Email: contact@example.com</p>
+                        <p>Phone: +1 (555) 123-4567</p>
+                        <p>Address: 123 Demo Street, WebCity, WC 45678</p>
+                    </div>
                     <div className="flex gap-3">
                         <a href="#">
                             <button className="bg-primary text-2xl p-2 rounded-full text-darkPrimaryText border-2 hover:bg-darkPrimaryText hover:text-primary border-darkCardSecondary duration-200">

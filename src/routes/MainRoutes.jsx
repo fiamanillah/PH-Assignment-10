@@ -56,11 +56,19 @@ const ROUTES = createBrowserRouter([
             },
             {
                 path: 'details/:prodId',
-                element: <ProductDetails />,
+                element: (
+                    <PrivateRoute>
+                        <ProductDetails />,
+                    </PrivateRoute>
+                ),
             },
             {
                 path: 'edit/:editProdId',
-                element: <EditProduct />,
+                element: (
+                    <PrivateRoute>
+                        <EditProduct />,
+                    </PrivateRoute>
+                ),
             },
             {
                 path: 'my-product',
