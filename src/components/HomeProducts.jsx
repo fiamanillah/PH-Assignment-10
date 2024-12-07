@@ -24,6 +24,7 @@ export default function HomeProducts() {
     }, []);
     return (
         <Section>
+            <h1 className="my-5">Latest Products</h1>
             <div className="grid grid-cols-3 gap-2 ">
                 {allProduct?.map(product => (
                     <div className="bg-lightCard dark:bg-darkCard p-3 rounded-xl" key={product._id}>
@@ -47,12 +48,12 @@ export default function HomeProducts() {
 
                         <div className="flex gap-3 py-3">
                             <Button
-                                className="bg-info"
+                                className="bg-accent flex items-center gap-2"
                                 onClick={() => {
                                     navigate(`/details/${product._id}`);
                                 }}
                             >
-                                <IoEyeOutline />
+                                <IoEyeOutline /> Details
                             </Button>
                         </div>
                     </div>

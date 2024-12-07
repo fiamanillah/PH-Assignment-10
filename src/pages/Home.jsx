@@ -1,3 +1,4 @@
+import CategoryList from '../components/CategoryList';
 import HomeProducts from '../components/HomeProducts';
 import Section from '../components/Section';
 import Slider from '../components/Slider';
@@ -7,6 +8,7 @@ export default function Home() {
         <Section>
             <div>
                 <Slider />
+                <CategoryList />
                 <HomeProducts />
                 <h1>Home</h1>
                 <p>
