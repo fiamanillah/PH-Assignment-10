@@ -1,10 +1,10 @@
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import Section from '../components/Section';
 import { useEffect, useState } from 'react';
 
 export default function ProductDetails() {
     const { prodId } = useParams();
-
+    const navigate = useNavigate();
     const [product, setProduct] = useState();
     useEffect(() => {
         (async () => {
@@ -20,9 +20,10 @@ export default function ProductDetails() {
                 setProduct(data);
             } catch (error) {
                 console.error('Error:', error);
+                navigate('/404');
             }
         })();
-    }, [prodId]);
+    }, [prodId, navigate]);
 
     console.log(product);
 

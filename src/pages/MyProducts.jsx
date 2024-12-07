@@ -103,7 +103,8 @@ export default function MyProducts() {
 
     return (
         <Section>
-            <div className="grid grid-cols-3 gap-2 ">
+            <h1 className='m-5'>My Products</h1>
+            <div className="grid grid-cols-3 gap-2 tablet-lg:grid-cols-2 mobile-lg:grid-cols-1">
                 {allProduct?.map(product => (
                     <div className="bg-lightCard dark:bg-darkCard p-3 rounded-xl" key={product._id}>
                         <img

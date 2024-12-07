@@ -25,8 +25,10 @@ const categories = [
 const CategoryList = () => {
     return (
         <Section>
-            <h1 className="my-3">Categories</h1>
-            <ul className="grid grid-cols-3 gap-2">
+            <div className="mx-auto max-w-screen-sm text-center my-5">
+                <h2 className="mb-4 text-4xl tracking-tight font-extrabold">Categories</h2>
+            </div>
+            <ul className="grid grid-cols-3 gap-2 mobile-lg:grid-cols-2">
                 {categories.map(category => (
                     <li
                         key={category.value}

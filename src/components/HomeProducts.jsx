@@ -24,8 +24,14 @@ export default function HomeProducts() {
     }, []);
     return (
         <Section>
-            <h1 className="my-5">Latest Products</h1>
-            <div className="grid grid-cols-3 gap-2 ">
+            <div className="mx-auto max-w-screen-sm text-center mt-8">
+                <h2 className="mb-4 text-4xl tracking-tight font-extrabold">Latest Products</h2>
+                <p className="mb-8 font-light lg:mb-16 sm:text-xl">
+                    Explore our newest range of premium sports gear, designed to elevate your game
+                    and provide unmatched performance and comfort.
+                </p>
+            </div>
+            <div className="grid grid-cols-3 gap-2 tablet-lg:grid-cols-2 mobile-lg:grid-cols-1">
                 {allProduct?.map(product => (
                     <div className="bg-lightCard dark:bg-darkCard p-3 rounded-xl" key={product._id}>
                         <img

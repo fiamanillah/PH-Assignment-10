@@ -19,7 +19,7 @@ export default function NavLinks() {
             {/* Overlay */}
             {equipmentMenuVisible && (
                 <div
-                    className="fixed left-0 top-0 z-0 w-[100vw] h-[100vh] bg-transparent"
+                    className="fixed left-0 top-0 z-0 w-[98vw] h-[98vh] bg-transparent"
                     onClick={closeEquipmentMenu}
                 />
             )}
@@ -39,7 +39,7 @@ export default function NavLinks() {
 
                 <li className="translate-y-[1px] relative">
                     <span
-                        className="hover:!text-accent !text-xl py-1 px-4 cursor-pointer select-none flex items-center gap-2"
+                        className="hover:!text-accent !text-xl py-1 px-4 cursor-pointer select-none flex items-center gap-2 text-darkPrimaryText"
                         onClick={toggleEquipmentMenu}
                     >
                         Equipments {equipmentMenuVisible ? <FaAngleUp /> : <FaAngleDown />}
@@ -47,7 +47,7 @@ export default function NavLinks() {
 
                     {/* Dropdown Menu */}
                     <ul
-                        className={`absolute z-20 flex w-[115%] flex-col items-start gap-2 bg-lightCardHover dark:bg-darkCardHover p-2 rounded-lg top-10 duration-200 ${
+                        className={`absolute z-20 flex w-[115%] flex-col items-start gap-2 bg-lightCardHover dark:bg-darkCardHover p-2 rounded-lg top-10 duration-200 prose-a:text-lightPrimaryText prose-a:dark:text-darkPrimaryText border-2 border-primary ${
                             equipmentMenuVisible ? 'scale-y-100' : 'scale-y-0'
                         } origin-top`}
                     >
