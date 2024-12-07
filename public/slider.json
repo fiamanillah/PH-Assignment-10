@@ -1,0 +1,37 @@
+[
+    {
+        "id": 1,
+        "title": "Gear Up for Every Challenge",
+        "description": "Push your limits with our wide selection of sports gear designed for every athlete. From team sports to solo adventures, we offer high-performance equipment to match your passion. With top brands, expert craftsmanship, and unbeatable durability, our collection ensures you stay ahead of the competition. Whatever your sport, whatever your goal – we’ve got what you need to succeed.",
+        "image": "/slider1.jpg",
+        "button": "Explore Now",
+        "buttonLink": "/all-products"
+    },
+    {
+        "id": 2,
+        "title": "Achieve Peak Performance",
+        "description": "Transform your game with the latest innovations in sports technology. Our carefully curated range of gear and apparel is crafted for those who strive for excellence. Whether you’re training hard or competing at the highest level, find the perfect tools to maximize your performance. Don’t just play—dominate the field, court, or track with confidence.",
+        "image": "/slider2.jpg",
+
+        "button": "Shop Performance Gear",
+        "buttonLink": "/all-products"
+    },
+    {
+        "id": 3,
+        "title": "Unleash Your Inner Champion",
+        "description": "Take the first step towards greatness with sports gear that’s as passionate as you are. From beginner-friendly essentials to pro-level equipment, our store offers solutions for every stage of your journey. Designed to inspire confidence and deliver results, our products help you train smarter, play harder, and achieve your dreams.",
+        "image": "/slider3.jpg",
+
+        "button": "Get Started",
+        "buttonLink": "/all-products"
+    },
+    {
+        "id": 4,
+        "title": "Your Adventure Starts Here",
+        "description": "Discover the thrill of outdoor and adventure sports with our specialized equipment. From trekking trails to riding waves, we provide the tools you need for unforgettable experiences. Find reliable, high-quality gear for hiking, camping, water sports, and more. Wherever your journey takes you, make sure you’re prepared to explore with confidence.",
+        "image": "/slider4.jpg",
+
+        "button": "Browse Adventure Gear",
+        "buttonLink": "/all-products"
+    }
+]
