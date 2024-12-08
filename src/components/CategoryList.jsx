@@ -8,6 +8,7 @@ import {
     GiSnowflake2,
 } from 'react-icons/gi';
 import Section from './Section';
+import { useNavigate } from 'react-router-dom';
 
 const categories = [
     { name: 'Balls', value: 'Balls', icon: <FaFootballBall /> },
@@ -23,6 +24,7 @@ const categories = [
 ];
 
 const CategoryList = () => {
+    const navigate = useNavigate();
     return (
         <Section>
             <div className="mx-auto max-w-screen-sm text-center my-5">
@@ -32,7 +34,10 @@ const CategoryList = () => {
                 {categories.map(category => (
                     <li
                         key={category.value}
-                        className="bg-lightCard dark:bg-darkCard flex items-center py-2 px-4 rounded-xl gap-2"
+                        className="bg-lightCard dark:bg-darkCard flex items-center py-2 px-4 rounded-xl gap-2 cursor-pointer hover:bg-lightCardHover dark:hover:bg-darkCardHover duration-200"
+                        onClick={() => {
+                            navigate(`/category/${category.name}`);
+                        }}
                     >
                         {category.icon} {category.name}
                     </li>

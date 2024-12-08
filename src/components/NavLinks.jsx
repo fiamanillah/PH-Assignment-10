@@ -3,7 +3,7 @@ import { NavLink } from 'react-router-dom';
 import { FaAngleDown } from 'react-icons/fa6';
 import { FaAngleUp } from 'react-icons/fa6';
 
-export default function NavLinks({ className }) {
+export default function NavLinks({ className, closeEquipmentMenuH }) {
     const [equipmentMenuVisible, setEquipmentMenuVisible] = useState(false);
 
     const toggleEquipmentMenu = () => {
@@ -16,7 +16,7 @@ export default function NavLinks({ className }) {
 
     return (
         <nav
-            className={`bg-primary bg-opacity-70 dark:bg-opacity-60 py-0 prose-a:text-darkPrimaryText rounded-full relative laptop-xl:absolute laptop-xl:h-[50vh] laptop-xl:top-[70px] laptop-xl:rounded-l-xl laptop-xl:right-0 laptop-xl:rounded-none laptop-xl:w-1/4 laptop-xl:px-4 laptop-xl:bg-opacity-100 laptop-xl:dark:bg-opacity-100 ${className}`}
+            className={`bg-primary bg-opacity-70 dark:bg-opacity-60 py-0 prose-a:text-darkPrimaryText rounded-full relative laptop-xl:absolute laptop-xl:h-[50vh] laptop-xl:top-[70px] laptop-xl:rounded-l-xl laptop-xl:right-0 laptop-xl:rounded-none laptop-xl:w-1/4 mobile-lg:w-1/2 mobile-sm:w-8/12 laptop-xl:px-4 laptop-xl:bg-opacity-100 laptop-xl:dark:bg-opacity-100 ${className}`}
         >
             {/* Overlay */}
             {equipmentMenuVisible && (
@@ -34,6 +34,10 @@ export default function NavLinks({ className }) {
                                 isActive ? '!text-darkPrimaryText bg-darkCard rounded-full' : ''
                             }`
                         }
+                        onClick={() => {
+                            closeEquipmentMenu();
+                            closeEquipmentMenuH();
+                        }}
                     >
                         Home
                     </NavLink>
@@ -65,7 +69,10 @@ export default function NavLinks({ className }) {
                                             : ''
                                     }`
                                 }
-                                onClick={closeEquipmentMenu}
+                                onClick={() => {
+                                    closeEquipmentMenu();
+                                    closeEquipmentMenuH();
+                                }}
                             >
                                 Add Equipment
                             </NavLink>
@@ -80,7 +87,10 @@ export default function NavLinks({ className }) {
                                             : ''
                                     }`
                                 }
-                                onClick={closeEquipmentMenu}
+                                onClick={() => {
+                                    closeEquipmentMenu();
+                                    closeEquipmentMenuH();
+                                }}
                             >
                                 My Equipments
                             </NavLink>
@@ -95,7 +105,10 @@ export default function NavLinks({ className }) {
                                             : ''
                                     }`
                                 }
-                                onClick={closeEquipmentMenu}
+                                onClick={() => {
+                                    closeEquipmentMenu();
+                                    closeEquipmentMenuH();
+                                }}
                             >
                                 All Equipments
                             </NavLink>
@@ -111,6 +124,10 @@ export default function NavLinks({ className }) {
                                 isActive ? '!text-darkPrimaryText bg-darkCard rounded-full' : ''
                             }`
                         }
+                        onClick={() => {
+                            closeEquipmentMenu();
+                            closeEquipmentMenuH();
+                        }}
                     >
                         Contact Us
                     </NavLink>

@@ -92,9 +92,9 @@ export default function AddProduct() {
         <Section>
             <h1 className="text-center">Add Product</h1>
             <h3>General Information</h3>
-            <div className="flex ">
-                <div className="flex justify-between gap-3 my-4 bg-lightCard dark:bg-darkCard p-3 rounded-2xl basis-2/3">
-                    <div className="flex items-center text-2xl gap-2 text-lightPrimaryText dark:text-darkPrimaryText bg-lightCardSecondary dark:bg-darkCardSecondary py-2 px-4 rounded-xl">
+            <div className="flex laptop-xl:flex-col-reverse ">
+                <div className="flex justify-between gap-3 my-4 bg-lightCard dark:bg-darkCard p-3 rounded-2xl basis-2/3 mobile-sm:flex-col">
+                    <div className="flex items-center text-2xl gap-2 text-lightPrimaryText dark:text-darkPrimaryText bg-lightCardSecondary dark:bg-darkCardSecondary py-2 px-4 rounded-xl ">
                         <CgProfile />{' '}
                         {loading ? (
                             <Lottie
@@ -125,7 +125,7 @@ export default function AddProduct() {
                     </Button>
                 </div>
             </div>
-            <div className="flex gap-3">
+            <div className="flex gap-3 laptop-xl:flex-col">
                 <div className="grid grid-cols-2 gap-3 basis-2/3 bg-lightCard dark:bg-darkCard p-3 rounded-2xl">
                     <InputField
                         label={'Product Name'}
@@ -135,8 +135,9 @@ export default function AddProduct() {
                         onChange={e => {
                             setName(e.target.value);
                         }}
+                        className={'laptop-xl:col-span-2'}
                     />
-                    <div>
+                    <div className="laptop-xl:col-span-2">
                         <label htmlFor="sports-equipment">Choose a category:</label>
                         <select
                             className="bg-lightCardSecondary border border-gray-300 rounded-lg block w-full p-2.5 dark:bg-darkCardSecondary dark:border-gray-600 dark:placeholder-gray-400 outline-none text-lightPrimaryText dark:text-darkPrimaryText"

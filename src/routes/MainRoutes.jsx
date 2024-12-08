@@ -12,6 +12,7 @@ import ProductDetails from '../pages/ProductDetails';
 import MyProducts from '../pages/MyProducts';
 import Contact from '../pages/Contact';
 import EditProduct from '../pages/EditProduct';
+import CategoryProducts from '../pages/CategoryProducts';
 
 const ROUTES = createBrowserRouter([
     {
@@ -77,6 +78,10 @@ const ROUTES = createBrowserRouter([
                         <MyProducts />,
                     </PrivateRoute>
                 ),
+            },
+            {
+                path: '/category/:category',
+                element: <CategoryProducts />,
             },
         ],
     },

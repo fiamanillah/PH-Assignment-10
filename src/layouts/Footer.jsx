@@ -10,14 +10,14 @@ export default function Footer() {
 
     return (
         <Section>
-            <div className="flex justify-between border-t-2 pt-10 rounded-t-[50px] mt-5">
-                <div className="basis-1/3 flex flex-col gap-3 items-start">
+            <div className="flex mobile-lg:flex-col mobile-lg:items-center justify-between border-t-2 pt-10 rounded-t-[50px] mt-5 mobile-lg:gap-5">
+                <div className="basis-1/3 flex flex-col gap-3 items-start mobile-lg:items-center">
                     <img
                         className="h-12"
                         src={darkMode ? '/logo-dark.png' : '/logo-light.png'}
                         alt=""
                     />
-                    <div>
+                    <div className='mobile-lg:text-center'>
                         <h4>Contact Us</h4>
                         <p>Email: contact@example.com</p>
                         <p>Phone: +1 (555) 123-4567</p>
@@ -52,9 +52,9 @@ export default function Footer() {
                     <li>Careers</li>
                     <li>Contact</li>
                 </ul>
-                <div className="basis-1/3">
+                <div className="basis-1/3 mobile-lg:flex mobile-lg:justify-center">
                     <img
-                        className=" bg-lightCard dark:bg-darkCard rounded-xl"
+                        className=" bg-lightCard dark:bg-darkCard rounded-xl w-[80%]"
                         src="/payments.png"
                         alt=""
                     />

@@ -23,7 +23,7 @@ function Header() {
         setEquipmentMenuVisible(prev => !prev);
     };
 
-    const closeEquipmentMenu = () => {
+    const closeEquipmentMenuH = () => {
         setEquipmentMenuVisible(false);
         setShowNav(false);
     };
@@ -38,32 +38,28 @@ function Header() {
             {equipmentMenuVisible && (
                 <div
                     className="fixed left-0 top-[70px] z-0 w-[98vw] h-[90vh] bg-transparent"
-                    onClick={closeEquipmentMenu}
+                    onClick={closeEquipmentMenuH}
                 />
             )}
             <div className="flex items-center justify-between bg-secondary bg-opacity-40 rounded-full px-3 py-1">
                 <div className="flex items-center gap-5">
                     <Link to={'/'}>
                         <img
-                            className="max-h-12"
+                            className="max-h-12 mobile-sm:h-8"
                             src={darkMode ? '/logo-dark.png' : '/logo-light.png'}
                             alt=""
-                            data-tooltip-id="my-tooltip"
-                            data-tooltip-content="Equisports"
                         />
                     </Link>
-                    <Tooltip
-                        id="my-tooltip"
-                        className="!bg-primary !text-white !p-1 !rounded-lg !shadow-lg"
-                    />
+
                     <NavLinks
                         className={`duration-200 origin-top ${
                             showNav ? 'laptop-xl:scale-y-100' : 'laptop-xl:scale-y-0'
                         } `}
+                        closeEquipmentMenuH={closeEquipmentMenuH}
                     />
                 </div>
 
-                <div className="flex items-center gap-2">
+                <div className="flex items-center gap-2 ">
                     {loading ? (
                         <Lottie animationData={loader3} loop={true} className="h-12" />
                     ) : user ? (
@@ -102,13 +98,13 @@ function Header() {
                             />
                         </div>
                     ) : (
-                        <div className="flex items-center gap-2">
+                        <div className="flex items-center gap-2 ">
                             <Link to={'/login'} className=" font-bold rounded-xl">
                                 Log In
                             </Link>
                             <Link
                                 to={'/register'}
-                                className="bg-darkCard border-2 border-darkCardHover font-bold py-1 px-2 rounded-xl !text-darkPrimaryText"
+                                className="bg-darkCard bg-opacity-50 border-2 border-darkCardHover font-bold py-1 px-2 rounded-xl !text-darkPrimaryText"
                             >
                                 Register
                             </Link>
