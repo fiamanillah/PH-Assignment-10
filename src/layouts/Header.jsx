@@ -10,14 +10,38 @@ import Lottie from 'lottie-react';
 import loader1 from '../assets/loader1.json';
 import loader3 from '../assets/loader3.json';
 import { IoLogOutOutline } from 'react-icons/io5';
+import { useState } from 'react';
+import { CiMenuFries } from 'react-icons/ci';
+import { RxCross2 } from 'react-icons/rx';
 
 function Header() {
     const { darkMode, toggleDarkMode } = useTheme();
     const { user, loading, logout } = useAuth();
+    const [showNav, setShowNav] = useState(false);
+    const [equipmentMenuVisible, setEquipmentMenuVisible] = useState(false);
+    const toggleEquipmentMenu = () => {
+        setEquipmentMenuVisible(prev => !prev);
+    };
+
+    const closeEquipmentMenu = () => {
+        setEquipmentMenuVisible(false);
+        setShowNav(false);
+    };
     const navigate = useNavigate();
     return (
-        <Section className={'sticky top-0 bg-opacity-0 backdrop-blur-lg py-0 pt-2 z-50'}>
-            <div className="flex items-center justify-between bg-secondary bg-opacity-30 rounded-full px-3 py-1">
+        <Section
+            className={
+                'sticky top-0 bg-opacity-0 dark:bg-opacity-0 backdrop-blur-lg py-0 pt-2 z-50'
+            }
+        >
+            {/* Overlay */}
+            {equipmentMenuVisible && (
+                <div
+                    className="fixed left-0 top-[70px] z-0 w-[98vw] h-[90vh] bg-transparent"
+                    onClick={closeEquipmentMenu}
+                />
+            )}
+            <div className="flex items-center justify-between bg-secondary bg-opacity-40 rounded-full px-3 py-1">
                 <div className="flex items-center gap-5">
                     <Link to={'/'}>
                         <img
@@ -32,7 +56,11 @@ function Header() {
                         id="my-tooltip"
                         className="!bg-primary !text-white !p-1 !rounded-lg !shadow-lg"
                     />
-                    <NavLinks />
+                    <NavLinks
+                        className={`duration-200 origin-top ${
+                            showNav ? 'laptop-xl:scale-y-100' : 'laptop-xl:scale-y-0'
+                        } `}
+                    />
                 </div>
 
                 <div className="flex items-center gap-2">
@@ -98,6 +126,16 @@ function Header() {
                         }}
                     >
                         {darkMode ? <BsMoonStars /> : <PiSunBold />}
+                    </button>
+                    <button
+                        onClick={() => {
+                            showNav ? setShowNav(false) : setShowNav(true);
+                            toggleEquipmentMenu();
+                        }}
+                        className="hidden laptop-xl:flex items-center justify-center text-xl w-10 h-10 rounded-full focus:outline-none transition-colors duration-300 
+               bg-lightCard dark:bg-darkCard border-2  dark:border-darkPrimary  dark:text-darkPrimaryText"
+                    >
+                        {showNav ? <RxCross2 /> : <CiMenuFries />}
                     </button>
                 </div>
             </div>
