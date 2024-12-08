@@ -13,6 +13,7 @@ import MyProducts from '../pages/MyProducts';
 import Contact from '../pages/Contact';
 import EditProduct from '../pages/EditProduct';
 import CategoryProducts from '../pages/CategoryProducts';
+import ForgotPassword from '../pages/ForgotPassword';
 
 const ROUTES = createBrowserRouter([
     {
@@ -80,8 +81,12 @@ const ROUTES = createBrowserRouter([
                 ),
             },
             {
-                path: '/category/:category',
+                path: 'category/:category',
                 element: <CategoryProducts />,
+            },
+            {
+                path: 'reset-password',
+                element: <ForgotPassword />,
             },
         ],
     },

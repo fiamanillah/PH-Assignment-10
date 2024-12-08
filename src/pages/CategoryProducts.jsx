@@ -2,17 +2,20 @@ import { useEffect, useState } from 'react';
 import Section from '../components/Section';
 import { useNavigate, useParams } from 'react-router-dom';
 import blank from '../assets/blank.json';
+import loader4 from '../assets/loader4.json';
+
 import Lottie from 'lottie-react';
-import Button from '../components/Button';
 export default function CategoryProducts() {
     const { category } = useParams();
     const navigate = useNavigate();
     const [products, setProduct] = useState([]);
+    const [loading, setLoading] = useState(false);
     console.log(category);
 
     useEffect(() => {
         (async () => {
             try {
+                setLoading(true);
                 const response = await fetch(
                     `${import.meta.env.VITE_API_URL}/category/${category}`
                 );
@@ -27,11 +30,21 @@ export default function CategoryProducts() {
             } catch (error) {
                 console.error('Error:', error);
                 navigate('/404');
+            } finally {
+                setLoading(false);
             }
         })();
     }, [category, navigate]);
 
     console.log(products);
+
+    if (loading) {
+        return (
+            <Section className={'flex justify-center items-center min-h-[80vh]'}>
+                <Lottie animationData={loader4} className="w-40" />;
+            </Section>
+        );
+    }
 
     if (!products || products.length === 0) {
         return (
@@ -75,7 +88,7 @@ export default function CategoryProducts() {
                                     navigate(`/details/${product._id}`);
                                 }}
                             >
-                                <Button className="bg-accent">Details</Button>
+                                Details
                             </td>
                         </tr>
                     ))}
