@@ -1,3 +1,5 @@
+<img src="https://i.ibb.co.com/nNkTL2qL/Screenshot-from-2025-02-08-16-35-36.png" alt="Screenshot-from-2025-02-08-16-35-36" style="width: 100%;">
+
 # EquiSports
 
 **Your go-to online store for premium sports equipment!**
