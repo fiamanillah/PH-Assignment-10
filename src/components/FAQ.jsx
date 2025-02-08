@@ -36,7 +36,7 @@ const FAQ = () => {
   ];
 
   return (
-    <section className="bg-[#0D1D15] text-[#F1F7ED] py-16 px-8">
+    <section className=" py-16 px-8">
       <h2 className="text-3xl font-bold text-center mb-8">
         Frequently Asked Questions
       </h2>
@@ -45,15 +45,13 @@ const FAQ = () => {
           <div key={index} className="mb-4 border-b border-[#6DA06F] pb-4">
             <button
               onClick={() => toggleQuestion(index)}
-              className="w-full flex justify-between items-center text-left text-xl font-semibold"
+              className="w-full flex justify-between items-center text-left text-xl font-semibold text-text-primary dark:text-darkPrimaryText"
             >
               {faq.question}
-              <span className="text-[#6DA06F]">
-                {openQuestion === index ? "-" : "+"}
-              </span>
+              <span>{openQuestion === index ? "-" : "+"}</span>
             </button>
             {openQuestion === index && (
-              <p className="mt-4 text-lg text-[#C7DFC5]">{faq.answer}</p>
+              <p className="mt-4 text-lg ">{faq.answer}</p>
             )}
           </div>
         ))}

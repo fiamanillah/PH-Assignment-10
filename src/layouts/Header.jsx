@@ -28,6 +28,8 @@ function Header() {
         setShowNav(false);
     };
     const navigate = useNavigate();
+    console.log(user);
+
     return (
         <Section
             className={
