@@ -6,7 +6,7 @@
 
 ## Live Site URL
 
-[Visit EquiSports Live](#)
+[Visit EquiSports Live](https://ph-assignment-10-79f51.web.app/)
 
 ## Project Description
 
@@ -134,6 +134,3 @@ npm run dev
 
 Go to: [http://localhost:5173](http://localhost:5173)
 
-## Live Link
-
-You can access the live version of EquiSports here: [Visit EquiSports Live](#)
